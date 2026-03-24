@@ -5,15 +5,13 @@ student_marks = {}
 # Create an empty dictionary to store data
 
 for i in range(n):  
-    data = input().split()  
-    # Take input like: Krishna 67 68 69 → split into list
-
-    name = data[0]  
-    # First item is the name
-
-    marks = list(map(float,data[1:]))
-    # Remaining items are marks → convert them into numbers
-
+    # Take input line (e.g., Krishna 67 68 69) and unpack it
+    # name gets the first string, line gets the remaining marks as a list
+    name, *line = input().split()
+    
+    # Convert all strings in line to floats using a list comprehension
+    marks = [float(score) for score in line]
+    
     student_marks[name] = marks  
     # Store name and marks in dictionary
 
