@@ -1,0 +1,35 @@
+def merge_the_tools():
+    # Step 1: Take string input
+    s = input("Enter the string: ").strip()
+
+    # Step 2: Take integer input safely
+    try:
+        k = int(input("Enter value of k: ").strip())
+    except ValueError:
+        print("Error: k must be an integer.")
+        return
+
+    # Step 3: Validate input
+    if k <= 0 or len(s) % k != 0:
+        print("Error: k must divide length of string.")
+        return
+
+    # Step 4: Process string in chunks
+    for i in range(0, len(s), k):
+
+        substring = s[i:i + k]
+
+        # Step 5: Remove duplicates while preserving order
+        unique_chars = ""
+
+        for ch in substring:
+            if ch not in unique_chars:
+                unique_chars += ch
+
+        # Step 6: Print result
+        print(unique_chars)
+
+
+# Run function
+if __name__ == '__main__':
+    merge_the_tools()
