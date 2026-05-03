@@ -1,39 +1,36 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
 from itertools import product
 
-# Step 1: Read K (number of lists) and M (modulo)
+# Read K and M
 K, M = map(int, input().split())
 
-# Step 2: Store all lists
+# Store lists
 all_lists = []
 
 for i in range(K):
     data = list(map(int, input().split()))
     
-    # First value is length → ignore
+    # Ignore first element (length)
     elements = data[1:]
     
     all_lists.append(elements)
 
-# Step 3: Generate all combinations
-all_combinations = product(*all_lists)
-
-# Step 4: Initialize max value
+# Initialize max value
 max_value = 0
 
-# Step 5: Check each combination
-for comb in all_combinations:
+# Generate all combinations
+for comb in product(*all_lists):
+    
+    total = 0
     
     # Calculate sum of squares
-    total = 0
     for x in comb:
         total += x * x
     
-    # Apply modulo
     result = total % M
     
-    # Update max
     if result > max_value:
         max_value = result
 
-# Step 6: Print result
+# Print result
 print(max_value)
